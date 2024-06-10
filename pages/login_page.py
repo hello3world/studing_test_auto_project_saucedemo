@@ -15,6 +15,7 @@ class Login_page(Base):
     login_name = '//*[@id="user-name"]'
     password = '//*[@id="password"]'
     button_login = '//*[@id="login-button"]'
+    main_word = '//div[@class="app_logo"]'
 
     # Getters
     def get_user_name(self):
@@ -28,6 +29,10 @@ class Login_page(Base):
     def get_button_login(self):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.button_login)))
+
+    def get_main_word(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.main_word)))
 
     # Actions
     def input_user_name(self, user_name):
@@ -50,3 +55,4 @@ class Login_page(Base):
         self.input_user_name("standard_user")
         self.input_password("secret_sauce")
         self.push_button()
+        self.checking_header(self.get_main_word(), 'Swag Labs')

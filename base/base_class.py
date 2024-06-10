@@ -7,3 +7,9 @@ class Base:
     def get_current_url(self):
         get_url = self.driver.current_url
         print("current url " + get_url)
+
+    """Methon checking header"""
+    def checking_header(self, word, result):
+        value_word = word.text
+        assert value_word == result
+        print("Good value word")
