@@ -46,6 +46,7 @@ class Login_page(Base):
     def autorization(self):
         self.driver.get(self.base_url)
         self.driver.maximize_window()
+        self.get_current_url()
         self.input_user_name("standard_user")
         self.input_password("secret_sauce")
         self.push_button()
