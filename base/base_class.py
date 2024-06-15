@@ -24,7 +24,7 @@ class Base:
         self.driver.save_screenshot(".\\screen\\" + name_screenshort)
 
     """Methon assert url"""
-    def  assert_url(self, result):
+    def assert_url(self, result):
         get_url = self.driver.current_url
         assert get_url == result
         print("Good value url")

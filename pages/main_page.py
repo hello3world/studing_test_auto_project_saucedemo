@@ -14,6 +14,8 @@ class Main_page(Base):
     # Locators
     btn_add_to_card_prod1 = '//button[@id="add-to-cart-sauce-labs-backpack"]'
     card = '//a[@data-test="shopping-cart-link"]'
+    btn_burger = '//button[@id="react-burger-menu-btn"]'
+    btn_about = '//a[@data-test="about-sidebar-link"]'
 
     # Getters
     def get_btn_add_to_card_prd1(self):
@@ -24,6 +26,14 @@ class Main_page(Base):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.card)))
 
+    def get_btn_burger(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_burger)))
+
+    def get_btn_about(self):
+        return WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_about)))
+
     # Actions
     def add_to_cart_product_1(self):
         self.get_btn_add_to_card_prd1().click()
@@ -33,9 +43,23 @@ class Main_page(Base):
         self.get_card().click()
         print("click by card")
 
+    def open_burger_menu(self):
+        self.get_btn_burger().click()
+        print("open burger menu")
+
+    def click_btn_about(self):
+        self.get_btn_about().click()
+        print("click button about")
+
     # Methods
     def select_product(self):
         self.get_current_url()
         self.add_to_cart_product_1()
         self.open_card()
         print("card is opened")
+
+    def open_burger_menu_about(self):
+        self.get_current_url()
+        self.open_burger_menu()
+        self.click_btn_about()
+        self.assert_url("https://saucelabs.com/")
