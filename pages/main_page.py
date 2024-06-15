@@ -12,22 +12,22 @@ class Main_page(Base):
         self.driver = driver
 
     # Locators
-    btn_add_to_card = '//button[@id="add-to-cart-sauce-labs-backpack"]'
+    btn_add_to_card_prod1 = '//button[@id="add-to-cart-sauce-labs-backpack"]'
     card = '//a[@data-test="shopping-cart-link"]'
 
     # Getters
-    def get_btn_add_to_card(self):
+    def get_btn_add_to_card_prd1(self):
         return WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.btn_add_to_card)))
+            EC.element_to_be_clickable((By.XPATH, self.btn_add_to_card_prod1)))
 
     def get_card(self):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.card)))
 
     # Actions
-    def add_product_1(self):
-        self.get_btn_add_to_card().click()
-        print("choose product 1")
+    def add_to_cart_product_1(self):
+        self.get_btn_add_to_card_prd1().click()
+        print("select product 1")
 
     def open_card(self):
         self.get_card().click()
@@ -36,6 +36,6 @@ class Main_page(Base):
     # Methods
     def select_product(self):
         self.get_current_url()
-        self.add_product_1()
+        self.add_to_cart_product_1()
         self.open_card()
         print("card is opened")

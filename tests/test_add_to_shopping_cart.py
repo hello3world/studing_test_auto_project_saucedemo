@@ -2,6 +2,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+
+from pages.cart_page import Cart_page
 from pages.login_page import Login_page
 # для применения явного ожидание
 from selenium.webdriver.support.wait import WebDriverWait
@@ -17,5 +19,7 @@ def test_select_product():
     login.autorization()
     mp = Main_page(driver)
     mp.select_product()
+    cart_page = Cart_page(driver)
+    cart_page.confirm_product()
     print("Successful finish test")
     time.sleep(10)
