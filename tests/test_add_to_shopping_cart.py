@@ -5,6 +5,7 @@ import time
 
 from pages.cart_page import Cart_page
 from pages.client_info_page import Client_info_page
+from pages.finish_page import Finish_page
 from pages.login_page import Login_page
 # для применения явного ожидание
 from selenium.webdriver.support.wait import WebDriverWait
@@ -12,6 +13,8 @@ from selenium.webdriver.support import expected_conditions as EC
 import pytest
 
 from pages.main_page import Main_page
+from pages.payment_page import Payment_page
+
 
 def test_select_product():
     driver = webdriver.Chrome()
@@ -24,5 +27,9 @@ def test_select_product():
     cart_page.confirm_product()
     client_info_page = Client_info_page(driver)
     client_info_page.input_client_information()
+    payment_page = Payment_page(driver)
+    payment_page.payment()
+    f = Finish_page(driver)
+    f.screenshot_finish_page()
     print("Successful finish test")
     time.sleep(10)
